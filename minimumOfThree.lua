@@ -6,11 +6,11 @@ list1 = {}
 function arrayNum(number, countTotal, list)    
     if number <= countTotal then do
         eChain = io.read()        
-        list[number] = getChainNum(eChain)
-        print(list[number])
+        table.insert(list, getChainNum(eChain))        
         arrayNum(number + 1, countTotal, list)
         end
     end
+    return list
 end
 
 function getChainNum(chain)    
@@ -27,4 +27,12 @@ function setMinOfThree(num1, num2, num3)
 return minOfThree
 end
 
-arrayNum(first, count1, list1)
+function printing_list(cter1, totalCter, lst1)
+  if cter1 <= totalCter then
+    print(lst1[cter1])   
+    printing_list(cter1 + 1, totalCter, lst1)
+  end
+end
+
+table.insert(list1, arrayNum(first, count1, list1))
+printing_list(first, count1, list1)
